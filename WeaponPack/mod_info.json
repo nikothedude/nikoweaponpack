@@ -1,0 +1,10 @@
+{
+	"id":"weaponpack",
+	"name":"WEAPONPACK", 
+	"author":"niko",
+	"version":"0.0.0",
+	"description":"niko weapons",
+	"gameVersion":"0.9.1a",
+#	"jars":["jars/WeaponPack.jar],
+#	"modPlugin":"data.scripts.BRModPlugin"
+}
