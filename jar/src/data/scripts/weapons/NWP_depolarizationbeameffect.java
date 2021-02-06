@@ -12,7 +12,6 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class NWP_depolarizationbeameffect implements BeamEffectPlugin {
 
-
     private final IntervalUtil fireInterval = new IntervalUtil(.1f, .1f);
     private boolean wasZero = true;
     private int damTick = 0;
@@ -28,7 +27,7 @@ public class NWP_depolarizationbeameffect implements BeamEffectPlugin {
             boolean hasResistantConduits = ((ShipAPI) target).getVariant().hasHullMod("fluxbreakers");
             float TICK_COUNT = ((maxFlux/500)+20);
             if  (hasResistantConduits) {
-                TICK_COUNT = (((maxFlux/500)+20)/1.25f);
+                TICK_COUNT = (((maxFlux/500)+20)*1.25f);
             }
 
             boolean shieldHit = target.getShield() != null && target.getShield().isWithinArc(beam.getTo());
@@ -70,10 +69,13 @@ public class NWP_depolarizationbeameffect implements BeamEffectPlugin {
                         Global.getSoundPlayer().playSound("swp_ionblaster_hit", 1.1f, 0.6f, beam.getTo(), ZERO);
                         ((ShipAPI) target).getFluxTracker().decreaseFlux(((ShipAPI) target).getCurrFlux());
 
-                        Global.getCombatEngine().addFloatingText(new Vector2f(beam.getFrom()), "thing work", 200f, Color.yellow, null, 1f, 0f);
+         //               Global.getCombatEngine().addFloatingText(new Vector2f(beam.getFrom()), "thing work", 200f, Color.yellow, null, 1f, 0f);
                         damTick = 0;
                     }
                 }
+            }
+          else {
+                damTick = 0;
             }
         }
         if (target == null) {
